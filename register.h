@@ -6,7 +6,7 @@ typedef struct {
  char name[20];
  int age;
  char major[30];
- char phoneNumber[20]; // p[0]: 010, p[1]: 1234, p[2]: 1234 => 010-1234-1234
+ char phoneNumber[20]; // 010-1234-1234
 } Student;
 
 int selectMenu();
