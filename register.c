@@ -18,47 +18,44 @@ return menu;
 
 int writeStudent(Student *s){
  printf("이름은 ? ");
- scanf("%[^\n]", s->name);
- getchar();
+ scanf("%s", s->name);
  printf("나이는 ? ");
  scanf("%d", &s->age);
- printf("전공은 ? ");
- scanf("%[^\n]", s->major);
+ printf("학부는 ? ");
+ scanf("%s", s->major);
  getchar();
- printf("휴대폰 번호는 ? ");
- scanf("%d", &s->phoneNumber);
+ printf("휴대폰 번호는? ex) 010-1234-1234 처럼 작성해주세요");
+ scanf("%s", s->phoneNumber);
  printf("=> 추가됨!\n");
  return 1;
 }
  
 void readStudent(Student s){
- printf("%5s %5d %15s %4d-%4d-%4d",
-   s.name, s.age, s.major, s.phoneNumber[0],s.phoneNumber[1],s.phoneNumber[2]);
+ printf("%5s %5d %15s %15s",
+   s.name, s.age, s.major, s.phoneNumber);
 }
 
 void listStudent(Student *s, int count){
  int i = 0;
- printf("\nNo Name  age           Major    Phone Number \n");
+ printf("\nNo Name    age   Major        Phone Number \n");
  printf("============================================\n");
  for(i= 0; i < count; i++){
    if(s[i].age == -1) continue;
    printf("%2d ", i+1);
-   readProduct(s[i]);
+   readStudent(s[i]);
  }
 }
 
 int updateStudent(Student *s){
- getchar();
  printf("이름은 ? ");
- scanf("%[^\n]", s->name);
- getchar();
+ scanf("%s", s->name);
  printf("나이는 ? ");
  scanf("%d", &s->age);
- printf("전공은 ? ");
- scanf("%[^\n]", s->major);
+ printf("학부는 ? ");
+ scanf("%s", s->major);
  getchar();
- printf("휴대폰 번호는 ? ");
- scanf("%d", &s->phoneNumber);
+ printf("휴대폰 번호는? ex) 010-1234-1234 처럼 작성해주세요 ");
+ scanf("%s", s->phoneNumber);
  printf("=> 수정완료!\n");
 return 1;
 }
@@ -67,4 +64,12 @@ int deleteStudent(Student *s){
 s->age = -1;
 printf("=> 삭제됨!\n");
 return 1;
+}
+
+int selectStudentNo(Student *s, int count){
+  int no;
+    listStudent(s, count);
+    printf("\n번호는? (취소:0)? ");
+    scanf("%d", &no);
+    return no;
 }
