@@ -24,7 +24,7 @@ int writeStudent(Student *s){
  printf("학부는 ? ");
  scanf("%s", s->major);
  getchar();
- printf("휴대폰 번호는? ex) 010-1234-1234 처럼 작성해주세요");
+ printf("휴대폰 번호는? ex) 010-1234-1234 처럼 작성해주세요 ");
  scanf("%s", s->phoneNumber);
  printf("=> 추가됨!\n");
  return 1;
