@@ -5,7 +5,7 @@
 typedef struct {
  char name[20];
  int age;
- char courage[30];
+ char major[30];
  int phoneNumber[3]; // p[0]: 010, p[1]: 1234, p[2]: 1234 => 010-1234-1234
 } Student;
 
