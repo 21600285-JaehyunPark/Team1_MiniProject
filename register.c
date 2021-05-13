@@ -10,6 +10,7 @@ printf("1. 조회\n");
 printf("2. 추가\n");
 printf("3. 수정\n");
 printf("4. 삭제\n");
+printf("5. 찾기\n");
 printf("0. 종료\n\n");
 printf("=> 원하는 메뉴는? ");
 scanf("%d", &menu);
@@ -72,4 +73,25 @@ int selectStudentNo(Student *s, int count){
     printf("\n번호는? (취소:0)? ");
     scanf("%d", &no);
     return no;
+}
+
+void searchName(Student *s, int count){
+    int scnt = 0;
+    char search[20];
+
+    printf("검색할 이름? ");
+    scanf("%s", search);
+
+    printf("\nNo Name    age   Major        Phone Number \n");
+    printf("============================================\n");
+    for(int i=0;i<count;i++){
+        if(s[i].age == -1) continue;
+        if(strstr(s[i].name, search)){
+        printf("%2d ", i+1);
+        readStudent(s[i]);
+        scnt++;
+        }
+    }
+    if(scnt == 0) printf("=>검색된 데이터 없음!");
+    printf("\n");
 }
