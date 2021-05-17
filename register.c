@@ -12,6 +12,7 @@ printf("3. 수정\n");
 printf("4. 삭제\n");
 printf("5. 찾기\n");
 printf("6. 저장\n");
+printf("7. 정렬\n");
 printf("0. 종료\n\n");
 printf("=> 원하는 메뉴는? ");
 scanf("%d", &menu);
@@ -130,10 +131,26 @@ int loadData(Student *s){
   return i;
 }
 
-void descendingSort(Student *s, int count){
-
+void descendingSort(Student *s, int count){ 
+  for(int i=0;i<count;i++){
+    for(int j=0;j<count;j++){
+      if(strcmp(s[i].name, s[j].name) < 0){
+        Student temp = s[i];
+        s[i] = s[j];
+        s[j] = temp;
+      }
+    }
+  }
 }
 
 void ascendingSort(Student *s, int count){
-
+  for(int i=0;i<count;i++){
+    for(int j=0;j<count;j++){
+      if(strcmp(s[i].name, s[j].name) > 0){
+        Student temp = s[i];
+        s[i] = s[j];
+        s[j] = temp;
+      }
+    }
+  }
 }
