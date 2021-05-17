@@ -4,7 +4,10 @@ int main() {
     Student s[100];
     int count=0, menu, index = 0;
 
-// 1. 조회 2. 추가 3. 수정 4. 삭제 5. 이름으로 찾기
+    count = loadData(s);
+    index = count;
+
+// 1. 조회 2. 추가 3. 수정 4. 삭제 5. 이름으로 찾기 6. 파일 저장
     while (1){
         menu = selectMenu();
         if (menu == 0) break;
@@ -35,6 +38,9 @@ int main() {
         }
         else if (menu == 5){
             searchName(s, count);
+        }
+        else if (menu == 6){
+            saveData(s, index);
         }
     }
     printf("종료됨!\n");

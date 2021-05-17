@@ -11,6 +11,7 @@ printf("2. 추가\n");
 printf("3. 수정\n");
 printf("4. 삭제\n");
 printf("5. 찾기\n");
+printf("6. 저장\n");
 printf("0. 종료\n\n");
 printf("=> 원하는 메뉴는? ");
 scanf("%d", &menu);
@@ -32,13 +33,13 @@ int writeStudent(Student *s){
 }
  
 void readStudent(Student s){
- printf("%5s %5d %15s %15s",
+ printf("%5s %4d  %20s %14s\n",
    s.name, s.age, s.major, s.phoneNumber);
 }
 
 void listStudent(Student *s, int count){
  int i = 0;
- printf("\nNo Name    age   Major        Phone Number \n");
+ printf("\nNo Name     age   Major         Phone Number \n");
  printf("============================================\n");
  for(i= 0; i < count; i++){
    if(s[i].age == -1) continue;
@@ -82,7 +83,7 @@ void searchName(Student *s, int count){
     printf("검색할 이름? ");
     scanf("%s", search);
 
-    printf("\nNo Name    age   Major        Phone Number \n");
+    printf("\nNo Name   age   Major        Phone Number \n");
     printf("============================================\n");
     for(int i=0;i<count;i++){
         if(s[i].age == -1) continue;
@@ -94,4 +95,45 @@ void searchName(Student *s, int count){
     }
     if(scnt == 0) printf("=>검색된 데이터 없음!");
     printf("\n");
+}
+
+void saveData(Student *s, int count){
+  FILE *fp;
+  fp = fopen("register.txt", "wt");
+
+  for(int i=0;i<count;i++){
+    if(s[i].age == -1) continue;
+      fprintf(fp, "%s %d %s %s\n", s[i].name, s[i].age, s[i].major, s[i].phoneNumber);
+  }
+
+  fclose(fp);
+  printf("=> 저장됨! \n");
+}
+
+int loadData(Student *s){
+  FILE *fp;
+  if(access("register.txt", 00) == -1){
+    printf("=> 파일 없음");
+    return 0;
+  }
+  fp = fopen("register.txt", "rt");
+  int i=0;
+  for(;i<100;i++){
+    fscanf(fp, "%s", s[i].name);
+    if(feof(fp)) break;
+    fscanf(fp, "%d", &s[i].age);
+    fscanf(fp, "%s", s[i].major);
+    fscanf(fp, "%s", s[i].phoneNumber);
+  }
+  fclose(fp);
+  printf("=> 로딩 성공!\n");
+  return i;
+}
+
+void descendingSort(Student *s, int count){
+
+}
+
+void ascendingSort(Student *s, int count){
+
 }
