@@ -42,6 +42,20 @@ int main() {
         else if (menu == 6){
             saveData(s, index);
         }
+        else if (menu == 7){
+            int a;
+            printf("오름차순은 1, 내림차순은 2를 입력해 주세요");
+            scanf("%d", &a);
+            if(a == 1){
+                ascendingSort(s, count);
+            }
+            else if (a == 2){
+                descendingSort(s, count);
+            }
+            else{
+                printf("=>잘못 누르셨습니다\n\n");
+            }
+        }
     }
     printf("종료됨!\n");
     return 0;
